@@ -10,5 +10,5 @@ test('finds sqrt of 16', () => {
 });
 
 test('finds sqrt of -16', () => {
-    expect(sq(-16)).toBe(NaN);
+    expect(sq(-16)).toBe(':(');
 });
