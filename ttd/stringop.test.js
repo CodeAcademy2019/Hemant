@@ -8,3 +8,7 @@ test('finds sqrt of 4', () => {
 test('finds sqrt of 16', () => {
     expect(sq(16)).toBe(4);
 });
+
+test('finds sqrt of -16', () => {
+    expect(sq(-16)).toBe(NaN);
+});
