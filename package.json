@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/CodeAcademy2019/Hemant/issues"
   },
-  "homepage": "https://github.com/CodeAcademy2019/Hemant#readme"
+  "homepage": "https://github.com/CodeAcademy2019/Hemant#readme",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
 }

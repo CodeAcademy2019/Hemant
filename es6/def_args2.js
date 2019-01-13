@@ -1,0 +1,1 @@
+module.exports = (str, freq = str.length) => str + "!".repeat(freq);
