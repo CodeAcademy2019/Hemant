@@ -9,5 +9,5 @@ test('test with all small', () => {
 });
 
 test('test with one small', () => {
-    expect(ts(["hello","World"])).toBe("[hello,World] becomes \"hW\"");
+    expect(ts(["hello","World"])).not.toBe("[hello,World] becomes \"Hw\"");
 });

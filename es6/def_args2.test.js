@@ -7,3 +7,7 @@ test('test with string hello and freq=2', () => {
 test('test with string hello and freq=def arg', () => {
     expect(ts('hello')).toBe(`hello!!!!!`);
 });
+
+test('test with string hello! and freq=def arg', () => {
+    expect(ts('hello!')).not.toBe(`hello!!!!!`);
+});
