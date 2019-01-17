@@ -1,9 +1,8 @@
-const st = require('./reject_a_promise');
+const st = require('./error');
 
 test('test if fulfill is called', () => {
-    return expect(st()).resolves.toBe('FULFILLED!');
+    return expect(st()).resolves.toBe('PROMISE VALUE');
 });
-
 
 test('test if reject is called', () => {
     return expect(st()).rejects.toThrow('REJECTED!');
