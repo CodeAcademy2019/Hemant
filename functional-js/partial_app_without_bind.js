@@ -4,4 +4,4 @@ function logger(namespace) {
     }
 }
 
-module.exports = logger
+module.exports = logger;

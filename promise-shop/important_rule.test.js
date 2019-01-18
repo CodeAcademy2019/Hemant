@@ -5,9 +5,9 @@ test('check iterate function with input 5', () => {
 });
 
 test('check alwaysThrows function with no input', () => {
-    expect(test_object.alwaysThrows).toThrow(`OH NOES`);
+    expect(test_object.alwaysThrows).toThrow('OH NOES');
 });
 
-test('check alwaysThrows function with no input', () => {
+test('check promise output, it should be [1,2,3,4,5]', () => {
     return expect(test_object.resultArray).toEqual([1,2,3,4,5]);
 });

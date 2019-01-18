@@ -1,18 +1,18 @@
-'use strict;'
+'use strict;';
 
 function Spy(target, method) {
-    var spy = {count: 0};
+  const spy = { count: 0 };
 
-    var oldFunction = target[method];
+  const oldFunction = target[method];
 
-    target[method] = function() {
-        spy.count++;
-        return oldFunction.apply(target, arguments);
-    }
-    return spy;
+  target[method] = function () {
+    spy.count++;
+    return oldFunction.apply(target, arguments);
+  };
+  return spy;
 }
 
-let sp = Spy(console, 'log');
+const sp = Spy(console, 'log');
 
 console.log('hello');
 

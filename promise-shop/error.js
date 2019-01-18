@@ -6,13 +6,14 @@ let parsePromised = (json) => {
         reject(new Error('REJECTED!'));
       }
     });
-  }
+  };
   
-  function onReject(error) {
+  let onReject = (error) => {
     console.log(error.message);
   }
   
-  parsePromised(process.argv[2]).then(null, onReject);
+  parsePromised('{').then(null, onReject);
 
-  module.exports = () => parsePromised();
+  module.exports = parsePromised;
+
   

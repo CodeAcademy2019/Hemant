@@ -14,7 +14,8 @@ let alwaysAsync = () =>  {
     a.push('MAIN PROGRAM ');
     console.log('MAIN PROGRAM');
 
-    return a;
+    Promise.all(promise).then(() => a);
+    
 }
 
 alwaysAsync();
