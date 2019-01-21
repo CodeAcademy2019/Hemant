@@ -1,21 +1,21 @@
 var fs = require('fs');
 
-let filterByExtension = (list) => {
-    return list.filter((str) => str.split('.')[1] == process.argv[3]);
+let filterByExtension = (list,ext) => {
+    return list.filter((str) => str.split('.')[1] == ext);
 }
 
-let getData = (fileName) => {
+let getData = (fileName,ext) => {
     return new Promise(function (resolve, reject) {
         fs.readdir(fileName, (err, list) => {
-            err ? reject(err) : resolve(filterByExtension(list));
+            err ? reject(err) : resolve(filterByExtension(list,ext));
         });
     });
 }
 
-getData(process.argv[2]).then((list) => {
-    list.forEach(element => {
-        console.log(element);
-    });
-})
+// getData(process.argv[2]).then((list) => {
+//     list.forEach(element => {
+//         console.log(element);
+//     });
+// })
 
-module.exports = getData;
+module.exports = {getData, filterByExtension};
