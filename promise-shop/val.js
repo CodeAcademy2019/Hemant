@@ -10,5 +10,4 @@ let promise = new Promise((resolve, reject) => {
 
 promise.then(attachTitle, null);
 
-
 module.exports = [ () => promise, attachTitle];
