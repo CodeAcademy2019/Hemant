@@ -18,4 +18,4 @@ setImmediate(() => console.log(resultArray));
 
 
 //wrapper();
-module.exports = { promise, iterate, alwaysThrows, resultArray};
+module.exports = { promise, iterate, alwaysThrows, resultArray };
