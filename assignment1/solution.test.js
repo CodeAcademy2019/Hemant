@@ -23,3 +23,19 @@ test('check if "isSpare" returns true if sum = 10 but throw =1', () => {
 test('check if "isSpare" returns true if sum = 0 but throw =2', () => {
     expect(test_obj.isSpare(0,2)).not.toEqual(true);
 });
+
+test('check if "isStrike" returns true if pins = 10', () => {
+    expect(test_obj.isStrike(10,1)).toEqual(true);
+});
+
+test('check if "isStrike" returns true if pins = 10 but throw =2', () => {
+    expect(test_obj.isStrike(10,2)).not.toEqual(true);
+});
+
+test('check if "isStrike" returns true if sum = 0 but throw =1', () => {
+    expect(test_obj.isStrike(0,1)).not.toEqual(true);
+});
+
+test('check if "isStrike" returns true if sum = 5 but throw =2', () => {
+    expect(test_obj.isStrike(5,2)).not.toEqual(true);
+});
