@@ -24,6 +24,10 @@ test('check if "isSpare" returns true if sum = 0 but throw =2', () => {
     expect(test_obj.isSpare(0,2)).not.toEqual(true);
 });
 
+test('check if "isSpare" returns true if sum = 8 but throw = 2', () => {
+    expect(test_obj.isSpare(8,2)).not.toEqual(true);
+});
+
 test('check if "isStrike" returns true if pins = 10', () => {
     expect(test_obj.isStrike(10,1)).toEqual(true);
 });
