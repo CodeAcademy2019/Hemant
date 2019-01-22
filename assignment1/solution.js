@@ -2,13 +2,12 @@ let currScore = 0;
 let currFrame = 1;
 let currThrow = 1;
 let totalScore = 0;
-let maxThrows = 2;
 let spareIsTrue = false;
 let strikeIsTrue = false;
 let addExtraForStrike = 0;
 
-const resetScoresForNextFrame = (maxThrows, currFrame, currThrow, currScore) => {
-    return [2, currFrame + 1, 1, 0];
+const resetScoresForNextFrame = (currFrame) => {
+    return [currFrame + 1, 1, 0];
 }
 
 const isSpare = (currScore, currThrow) => {
@@ -51,7 +50,7 @@ const roll = (pins) => {
                 spareIsTrue = true;
                 currScore = 0;
             } else {
-                [maxThrows, currFrame, currThrow, currScore] = resetScoresForNextFrame(maxThrows, currFrame, currThrow, currScore);
+                [currFrame, currThrow, currScore] = resetScoresForNextFrame(currFrame);
             }
         }
     }
@@ -66,11 +65,10 @@ let roll_test = (arrOfRolls) => {
     currFrame = 1;
     currThrow = 1;
     totalScore = 0;
-    maxThrows = 2;
     spareIsTrue = false;
     strikeIsTrue = false;
     addExtraForStrike = 0;
-    
+
     arrOfRolls.forEach(element => {
         roll(element);
     });

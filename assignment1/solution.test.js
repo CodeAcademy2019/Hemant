@@ -12,6 +12,14 @@ test('test with input which checks if strike is handled', () => {
     expect(test_obj.roll_test([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10])).toEqual(30);
 });
 
-test('test with input which checks if strike is handled', () => {
-    expect(test_obj.roll_test([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10])).toEqual(30);
+test('check if "isSpare" returns true if sum = 10', () => {
+    expect(test_obj.isSpare(10,2)).toEqual(true);
+});
+
+test('check if "isSpare" returns true if sum = 10 but throw =1', () => {
+    expect(test_obj.isSpare(10,1)).not.toEqual(true);
+});
+
+test('check if "isSpare" returns true if sum = 0 but throw =2', () => {
+    expect(test_obj.isSpare(0,2)).not.toEqual(true);
 });
