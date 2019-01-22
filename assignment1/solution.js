@@ -8,11 +8,7 @@ let strikeIsTrue = false;
 let addExtraForStrike = 0;
 
 const resetScoresForNextFrame = (maxThrows, currFrame, currThrow, currScore) => {
-    return [2, currFrame+1, 1, 0];
-}
-
-const firstThrowRoll = (currThrow, maxThrows) => {
-    return [currThrow+1, maxThrows+1];
+    return [2, currFrame + 1, 1, 0];
 }
 
 const isSpare = (currScore, currThrow) => {
@@ -25,14 +21,14 @@ const isStrike = (pins, currThrow) => {
 
 const roll = (pins) => {
     totalScore += pins;
-    if(isStrike(pins, currThrow) && !strikeIsTrue) {
+    if (isStrike(pins, currThrow) && !strikeIsTrue) {
         strikeIsTrue = true;
     }
-    else if(strikeIsTrue && addExtraForStrike < 2) {
+    else if (strikeIsTrue && addExtraForStrike < 2) {
         //totalScore += pins;
         addExtraForStrike++;
     }
-    else if(strikeIsTrue && addExtraForStrike == 2){
+    else if (strikeIsTrue && addExtraForStrike == 2) {
         strikeIsTrue = false;
         currFrame++;
         addExtraForStrike = 0;
@@ -42,11 +38,11 @@ const roll = (pins) => {
         currScore = 0;
     } else {
         currScore += pins;
-        if(spareIsTrue) {
+        if (spareIsTrue) {
             totalScore += pins;
             spareIsTrue = false;
         }
-        
+
         if (currThrow == 1) {
             currThrow++;
         }
@@ -65,10 +61,28 @@ const score = () => {
     return totalScore;
 }
 
-const arrOfThrows = [3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6, 3, 6];
+let roll_test = (arrOfRolls) => {
+    currScore = 0;
+    currFrame = 1;
+    currThrow = 1;
+    totalScore = 0;
+    maxThrows = 2;
+    spareIsTrue = false;
+    strikeIsTrue = false;
+    addExtraForStrike = 0;
+    
+    arrOfRolls.forEach(element => {
+        roll(element);
+    });
+    let res = score();
+    return res;
+}
 
-arrOfThrows.forEach(element => {
-    roll(element);
-});
+module.exports = { roll_test, resetScoresForNextFrame, isSpare, isStrike };
+// const arrOfThrows = [6, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-console.log(score());
+// arrOfThrows.forEach(element => {
+//     roll(element);
+// });
+
+// console.log(score());
