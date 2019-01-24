@@ -1,4 +1,12 @@
-var fs = require('fs');
-const mymodule = require('./modular_module');
+const filterFiles = require('./modular_module');
 
-let promise = mymodule(process.argv[2], process.argv[3])
+const dir = process.argv[2];
+const filter = process.argv[3];
+filterFiles(dir, filter, (err, list) => {
+  if (err) {
+    console.log(err);
+  }
+  list.forEach((element) => {
+    console.log(element);
+  });
+});
