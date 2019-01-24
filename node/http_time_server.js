@@ -13,6 +13,10 @@ let now = () => {
         addZero(date.getMinutes());
 }
 
+let callback = (arg) => {
+    console.log(arg);
+}
+
 const server = net.createServer((socket) => {
     socket.end(now() + '\n');
 })

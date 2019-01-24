@@ -2,8 +2,8 @@ var http = require('http');
 
 http.createServer((req, res) => {
     const url = req.url;
-    if (url === '/hello') {
-        res.write('<h1>Hello<h1>');
+    if (url === '/') {
+        res.write('Hello');
         res.end();
     } else if (url === '/world') {
         res.write('<h1>World<h1>');

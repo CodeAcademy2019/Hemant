@@ -1,15 +1,15 @@
-let http = require('http');
+const http = require('http');
 
-let callback = (arg) => arg;
+const callback = (data) => {
+    console.log(data);
+};
 
-let wrapper = (url) => {
-    http.get(url, (response) => {
-        response.on("data", (data) => {
-            console.log(data.toString());
-            callback(data.toString());
-        })
-    });
-}
+const getRequest = (callback) => {
+    http.get(process.argv[2], (response) => {
+        response.setEncoding('utf8');
+        response.on('data', callback);
+        response.on('error', console.log);    
+    }).on('error', console.log);  
+};
 
-wrapper(process.argv[2]);
-module.exports = callback;
+module.exports = getRequest; 

@@ -24,7 +24,7 @@ const roll = (pins) => {
         strikeIsTrue = true;
     }
     else if (strikeIsTrue && addExtraForStrike < 2) {
-        //totalScore += pins;
+        totalScore += pins;
         addExtraForStrike++;
     }
     else if (strikeIsTrue && addExtraForStrike == 2) {
