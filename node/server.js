@@ -2,11 +2,14 @@ var http = require('http');
 
 http.createServer((req, res) => {
     const url = req.url;
-    if (url === '/') {
-        res.write('Hello');
+    if (url === '/q') {
+        res.write('q');
         res.end();
-    } else if (url === '/world') {
-        res.write('<h1>World<h1>');
+    } else if (url === '/w') {
+        res.write('w');
+        res.end();
+    } else if (url === '/e') {
+        res.write('e');
         res.end();
     }
-}).listen(3000,  () => console.log("server start at port 3000")); 
+}).listen(7000,  () => console.log("server start at port 3000")); 
