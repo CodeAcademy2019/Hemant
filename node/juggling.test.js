@@ -1,21 +1,14 @@
-const route = require('./server');
-const testFunc = require('./juggling');
+const juggler = require('./juggling');
 
-describe('juggleAsync()', () => {
-  it('should receive info array from http URLs', (done) => {
-    const callbackF = (data) => {
-      expect(data).toEqual(['q', 'w', 'e']);
+describe('Juggling asycn requests ', () => {
+  it('should receive info from http URL', (done) => {
+    function callbackF(data) {
+      expect(data).toEqual(['Hello', 'world', 'e']);
       done();
-    }; 
-    process.argv = ['node', 'juggling.js', 'http://localhost:7000/q', 'http://localhost:7000/w', 'http://localhost:7000/e'];
-    testFunc(callbackF);
-  });
-  xit('should receive not receive anything other info from http URLs', (done) => {
-    const callbackF = (data) => {
-      expect(data).not.toEqual([null, null, null]);
-      done();
-    }; 
-    process.argv = ['node', 'juggling.js', 'http://localhost:7000/hello', 'http://localhost:7000/world', 'http://localhost:7000/bye'];
-    testFunc(callbackF);
+    }
+    const urls = ['http://localhost:4000/', 'http://localhost:4000/w', 'http://localhost:4000/e'];
+    for (let i = 0; i < 3; i += 1) {
+      juggler(urls[i], i, callbackF);
+    }
   });
 });

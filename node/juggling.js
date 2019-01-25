@@ -1,29 +1,29 @@
 const http = require('http');
 
-const juggleAsync = (callback) => {
-    const urlList = process.argv.slice(2);
-    const array = [];
-    urlList.forEach(() => {
-        array.push(null);
-    });
-    urlList.forEach((url, index) => {
-        http.get(url, (response) => {
-            let body = '';
-            response.setEncoding('utf-8');
-            response.on('data', (data) => {
-                body += data;
-            });
-            response.on('end', () => {
-                array[index] = body;
-                if (array.filter(val => val != null).length === urlList.length) {
-                    array.forEach((val) => {
-                        console.log(val);
-                    });
-                    callback(array);
-                }
-            });
-        });
-    });
+const finalQueue = [];
+let responseReceived = 0;
+
+const callback = (responseArray) => {
+  for (let i = 0; i < 3; i += 1) {
+    console.log(responseArray[i]);
+  }
 };
-juggleAsync();
-module.exports = juggleAsync;
+const httpGetRequest = (urlAddress, indexOfResult, callbackF) => {
+  http.get(urlAddress, (response) => {
+    let result = '';
+    response.setEncoding('utf8');
+    response.on('data', (data) => {
+      result += data;
+    });
+    response.on('end', () => {
+      finalQueue[indexOfResult] = result;
+      responseReceived += 1;
+      if (responseReceived === 3) {
+        callbackF(finalQueue);
+      }
+    });
+  });
+};
+
+
+ module.exports = httpGetRequest;
